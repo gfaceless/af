@@ -16,7 +16,7 @@ p {
 
 /* form layout:*/
 
-form.content,  {
+form.content{
     width: 650px;
     border: 1px solid #ccc;
     position: relative;
