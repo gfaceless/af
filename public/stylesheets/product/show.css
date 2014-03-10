@@ -38,3 +38,11 @@
 #details .control a {
     margin: 0 10px;
 }
+
+form.delete {
+    margin-top: 40px;
+    padding-right: 50px;
+}
+form.delete input {
+    float: right;
+}

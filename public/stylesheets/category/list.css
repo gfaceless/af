@@ -156,13 +156,15 @@ dl.categories {
     display: block;
 }
 
+/*after comma part is for js control*/
 
-.categories>dt:hover {
+/* pay attention to overwrite*/
+.categories>dt:hover, .categories dt.highlight{
     background-color: #88766e;
     border-left: 1px solid #88766e;
 }
 
-.categories>dt:hover a {
+.categories>dt:hover a, .categories dt.highlight a{
     color: white;
 }
 
@@ -256,3 +258,4 @@ dl.categories {
 .categories.expanded {
     display: block;
 }
+

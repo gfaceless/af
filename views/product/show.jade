@@ -2,6 +2,9 @@ extends ../layout
 
 append css
   link(rel='stylesheet', href='/stylesheets/product/show.css')
+append js-bottom
+  script(src="/js/product-show.js")
+
 block content
   div#details
     if !product
@@ -30,9 +33,10 @@ block content
             a(href= '/products?category=' + cat._id)= cat.name
           else
             span 未分类
-        li
-          span.label 产地:
-          span= product['made-in']
+        if product['made-in']
+          li
+            span.label 产地:
+            span= product['made-in']
         li
           span.label 产品描述:
           div.desc: p= product.desc

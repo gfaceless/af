@@ -1,5 +1,8 @@
 extends ../layout
 
+append css
+  link(rel='stylesheet', href='/stylesheets/product/show.css')
+
 block content
   -var m = mfr
   -var image = m.images && m.images[0]
@@ -17,13 +20,15 @@ block content
         span= m.shortName
       li
         span.label 详细描述:
-        span= m.desc
-      li
-        span.label 省份:
-        span= m.province
-      li
-        span.label 成立时间:
-        span= m.date
+        div.desc: p= m.desc
+      if m.province
+        li
+          span.label 省份:
+          span= m.province
+      if m.date
+        li
+          span.label 成立时间:
+          span= m.date
     if isSelf
       a(href='/mfrs/' + m._id + '/edit') 编辑
     else

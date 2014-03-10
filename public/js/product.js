@@ -27,7 +27,7 @@ $(function () {
     var iid = "i-id-" + createInput.inc;
 
     return $('<div/>', {"class": "form-element"})
-      .append($("<input/>", {"class": labelInputClass, /*"for": iid,*/ "maxlength": 4, placeholder: "(例:齿轮直径)"}))
+      .append($("<input/>", {"class": labelInputClass, /*"for": iid,*/ "maxlength": 10, placeholder: "(例:齿轮直径)"}))
       .append($("<input/>", {id: iid, type: 'text'}))
       .append($btnDel.clone())
   }

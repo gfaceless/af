@@ -15,7 +15,7 @@ block content
         else
           p 该防伪二维码已不是第一次扫描查询，第一次查询的时间是:
           p#queriedDate= sale.queriedDate
-          script
+          script.
             (function (){
               var display = document.getElementById('queriedDate');
               var date = new Date(display.innerHTML);

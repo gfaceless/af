@@ -6,9 +6,9 @@ append js-bottom
 
 block content
   include ../category/list
-  div#list
+  div.results
     unless products.length
-      div#no-result 无结果
+      div.no-results 无结果
     each product in products
       -var url = '/products/' + product._id;
       div.item

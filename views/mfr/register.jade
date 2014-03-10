@@ -25,7 +25,7 @@ block content
       input#fullName(type="text", name="mfr[fullName]", value= mfr ? mfr.fullName : '')
     div.form-element
       label(for="desc") 厂商介绍:
-      input#desc(type="text", name="mfr[desc]", value= mfr ? mfr.desc : '')
+      textarea#desc(name="mfr[desc]", rows="6")= mfr ? mfr.desc : ''
     div.form-element
       label(for="province") 所在省份
       input#province(type="text", name="mfr[province]", value= mfr ? mfr.province : '')

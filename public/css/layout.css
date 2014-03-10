@@ -16,7 +16,7 @@ p {
 
 /* form layout:*/
 
-form.content {
+form.content,  {
     width: 650px;
     border: 1px solid #ccc;
     position: relative;
@@ -64,4 +64,32 @@ form.content label.error {
 form.content .category-picker {
     display: none;
 }
+
+form.content textarea {
+    width: 450px;
+}
+
+/*FORM END*/
+
+
+.no-results {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #bbb;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+
+.results {
+    margin: auto;
+    max-width: 1200px;
+    padding: 5px 10px 5px 10px;
+    overflow: hidden;
+}
+
+
+
+
 
