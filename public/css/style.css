@@ -1,0 +1,13 @@
+
+
+form.content .ui-button {
+    font-size: 90%;
+}
+
+form.content .input-remover {
+    margin-left: 10px;
+    position: relative;
+    bottom: 2px;
+    font-size: 150%;
+    width: auto;
+}

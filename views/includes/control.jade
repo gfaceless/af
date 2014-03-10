@@ -1,0 +1,14 @@
+if logged_in
+  ul#control
+    if mid
+      li: a(href="/products/register") 上传/注册产品
+      li: a(href="/products?mfr=#{locals.mid}") 我的所有产品
+      li: a(href="/mfrs/#{locals.mid}") 我的企业信息
+    else if locals.isAdmin
+      li: a(href="#") 上传/注册产品(开发中)
+      li: a(href="/users") 查看全部账户
+      li: a(href="/manage/categories") 编辑类别菜单
+      li: a(href="#") 编辑主页幻灯片(开发中)
+    else
+      li: a(href="/mfrs/register") 注册为生产厂商
+    //- li: a(href="#") 我的账户信息

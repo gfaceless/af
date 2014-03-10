@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  h3 产品名称: #{ product ? product.name : '无'}
+  unless sales.length
+    div 无结果
+  ul
+    each sale in sales
+      li
+        p 码源：#{sale.code}
+        p 查询次数：#{sale.queriedCount}

@@ -1,0 +1,10 @@
+extends ../layout
+block content
+  fieldset.bigForm
+    form(method="POST")
+      label 用户名:
+        input(type="text", name="user[name]")
+      label 密码:
+        input(type="password", name="user[password]")
+      input(type="hidden", name="referrer", value= referrer)
+      input(type="submit", value="登录")

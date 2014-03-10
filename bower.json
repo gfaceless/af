@@ -1,0 +1,26 @@
+{
+  "name": "2dc",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gfaceless/2dc",
+  "authors": [
+    "gfaceless <giggle2016@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/js/vendor",
+    "test",
+    "tests",
+    "public/vendor"
+  ],
+  "dependencies": {
+    "jquery": "1.11",
+    "jquery-validation": "~1.11.2",
+    "jquery-ui": "~1.10.4",
+    "jquery-file-upload": "~9.5.6",
+    "jquery-timer": "*"
+  }
+}

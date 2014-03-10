@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .check-results
+    h3= title
+    if !sale
+      p 您查询的产品不是正品
+    else
+      p 该产品是正品
+      div
+        span 查询次数:
+        span= sale.queriedCount
+        if sale.queriedCount <= 1
+          p 该防伪二维码是第一次扫描查询
+        else
+          p 该防伪二维码已不是第一次扫描查询，第一次查询的时间是:
+          p#queriedDate= sale.queriedDate
+          script
+            (function (){
+              var display = document.getElementById('queriedDate');
+              var date = new Date(display.innerHTML);
+              display.innerHTML = date.toLocaleString();
+            })();
+          p ip为 #{sale.ips}
+          p 请谨慎判断
+
+      div
+        a(href="/products/" + sale.product) 查看产品详细信息

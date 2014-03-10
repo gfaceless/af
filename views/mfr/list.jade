@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  #list
+    each m in mfrs
+      url = '/mfrs/' + m._id
+      .item
+        #imageContainer
+          a(href= url, title= m.shortName)
+            if m.images && m.images[0]
+              img(src= '/images/mfrs/' + m.images[0])
+            else
+              img(src= '/images/no-image.png')
+        h3#name
+          a(href= url)= m.shortName
+        ul.info
+          li
+            p= m.fullName
+          li
+            p= m.desc
+          li
+            p= m.province
+          if locals.auth
+            a(href = '/manufacturers/edit/' + m.pid) 编辑

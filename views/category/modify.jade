@@ -1,0 +1,40 @@
+extends ../layout
+
+block js-bottom
+  script(src="/javascripts/category/modify.js")
+
+append css
+  link(rel='stylesheet', href='/stylesheets/category/modify.css')
+
+block content
+  form#modify(action="/manage/categories/refresh", method="POST")
+    input.lvl0(type="radio", name="categ-selecter", checked)
+
+    input.lvl0(type="text", value=doc.name, name=doc._id)
+    dl#categ
+      if doc.children
+        each docLvl1 in doc.children
+          dt
+            input.lvl1(type="radio",name="categ-selecter")
+            input.lvl1(type="text",name=docLvl1._id,value=docLvl1.name)
+            button.delete(tabindex=-1) 删除
+          if docLvl1.children
+            dd
+              each docLvl2 in docLvl1.children
+                dl
+                  dt
+                    input.lvl2(type="radio",name="categ-selecter")
+                    input.lvl2(type="text",name=docLvl2._id,value=docLvl2.name)
+                    button.delete(tabindex=-1) 删除
+                  if docLvl2.children
+                    each docLvl3 in docLvl2.children
+                      dd
+                        input.lvl3(type="text",name=docLvl3._id,value=docLvl3.name)
+                        button.delete(tabindex=-1) 删除
+
+
+    #form-control
+      button#add 增加子目录
+      br
+      input(type="submit")
+    //button 返回

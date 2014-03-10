@@ -1,0 +1,33 @@
+extends ../layout
+
+//append js
+//  script.
+//    !{stringify(expose, 'data', expose.env)}
+
+append template
+  if validationOpt
+    script#val-options(type="template/text")!=validationOpt
+append css
+  link(rel="stylesheet", href="/vendor/jquery-ui/themes/smoothness/jquery-ui.css")
+append js-bottom
+  script(src="/vendor/jquery-validation/jquery.validate.js")
+  script(src="/js/form-validation.js")
+  script(src="/js/product.js")
+
+block content
+  form.content(method="POST")
+    div.form-element
+      label(for="username") 会员名:
+      input#username(type="text", name="user[name]")
+
+    div.form-element
+      label(for="password") 登录密码:
+      input#password(type="password", name="user[password]")
+
+    div.form-element
+      label(for="re-password") 确认密码:
+      input#re-password(type="password")
+
+    div.control.ui-helper-clearfix
+      button.save(type="submit") 注册
+      button.cancel(type="button") 返回

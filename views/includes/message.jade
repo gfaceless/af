@@ -1,0 +1,4 @@
+//- locals.message is req.flash('info'), which is always an object
+//- so we use toString() instead of directly check if it exists.
+if locals.message.toString()
+  #message= locals.message

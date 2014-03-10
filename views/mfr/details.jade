@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  -var m = mfr
+  -var image = m.images && m.images[0]
+  div#details
+    if image
+      img.image(src= '/' + image)
+    else
+      img.image(src= '/img/no-image.png')
+    ul
+      li
+        span.label 全称:
+        span= m.fullName
+      li
+        span.label 简称:
+        span= m.shortName
+      li
+        span.label 详细描述:
+        span= m.desc
+      li
+        span.label 省份:
+        span= m.province
+      li
+        span.label 成立时间:
+        span= m.date
+    if isSelf
+      a(href='/mfrs/' + m._id + '/edit') 编辑
+    else
+      a(href='/products/list?mfr=' + m._id)= m.shortName + '的全部产品'

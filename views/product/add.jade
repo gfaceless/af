@@ -1,0 +1,72 @@
+extends ../layout
+
+if validationOpt
+  append template
+    script#val-options(type="template/text")!=validationOpt
+
+append css
+  link(rel="stylesheet", href="/vendor/jquery-ui/themes/smoothness/jquery-ui.css")
+
+append js-bottom
+  script(src="/js/category-picker.js")
+  script(src="/vendor/jquery-validation/jquery.validate.js")
+  script(src="/js/form-validation.js")
+  script(src="/js/product.js")
+
+block content
+  //- we always assume that as long as product exists, product.categories exists and is an array:
+  -var cat = product ? ( product.categories[0] ? product.categories[0] : '未分类' ) : null
+  //- but we do not assume product.images is an array when product exists:
+  -var imgSrc = product ? ( product.images ? product.images[0] : null ) : null
+  -var extra = product ? product.extra : undefined;
+
+  //- enctype="multipart/form-data" would be changed on the fly.
+  //- TODO: use the jquery-file-upload library for better implementation
+  form.content(method="POST")
+    if product
+      input(type="hidden", name="_method", value="put")
+    div.form-element
+      label(for="pname") 产品名称:
+      input#pname(type="text", name="product[name]", value= product ? product.name : '')
+    div.form-element
+      label(for="categ-btn") 产品种类:
+      button.select-category(type="button") 选择种类
+      span.selected-cat=cat ? cat.name : '未选择'
+      input(type="hidden", name="product[categories][0]",
+      value= cat ? cat._id : '')
+      div.category-picker
+        include ../category/list
+
+    div.form-element
+      label(for="p-desc") 产品描述:
+      textarea#p-desc(name="product[desc]",rows="5")= product ? product.desc: ''
+    div.form-element
+      label(for="img-upload") 图片:
+      input#img-upload(type="file", name="image")
+      div.files
+        if(imgSrc)
+          img(src= '/' + imgSrc)
+    div.control.ui-helper-clearfix
+      button.show-more(type="button") 更多可选
+      button.add-more(type="button") 添加自定义信息
+
+    div.more-info.ui-helper-hidden
+      div.form-element
+        label(for="p-weight") 产品重量:
+        input#p-weight(type="text", name="product[weight]", value= product ? product.weight : '')
+      div.form-element
+        label(for="p-date") 上市日期:
+        input#p-date(type="text", name="product[date]", value= product ? product.date : '')
+      div.form-element
+        label(for="p-made-in") 产地:
+        input#p-made-in(type="text", name="product[made-in]", value= product ? product["made-in"]: '')
+    div.added-info
+      if extra
+        each val, key in extra
+          div.form-element
+            input.field-label(type="text", value=key)
+            input(type="text", name="product[extra][" + key + "]", value=val)
+
+    div.control.ui-helper-clearfix
+      button.save(type="submit")= product ? '保存' : '提交'
+      button.cancel(type="button") 返回

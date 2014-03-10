@@ -1,0 +1,67 @@
+p {
+    white-space: pre-wrap;
+}
+
+
+
+
+.content {
+    margin: 20px auto;
+    padding: 20px 30px;
+    font-size: 150%;
+}
+
+
+
+
+/* form layout:*/
+
+form.content {
+    width: 650px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+
+form.content .form-element{
+    margin: 15px 0;
+    padding: 0;
+    clear: both;
+}
+
+form.content label, form.content .field-label{
+    width: 100px;
+    margin: 0 25px 0 0;
+    text-align: right;
+    float: left;
+}
+form.content .field-label {
+    border: 0;
+    outline: 1px solid #CCCCCC;
+}
+
+form.content .control {
+    margin: 40px 50px 0;
+}
+
+form.content button.save{
+    margin-left: 60%;
+}
+form.content button.cancel {
+    margin-left: 10px;
+}
+
+
+
+form.content label.error {
+    float: none;
+    /*un-floating inline elements don't have a width: */
+    /*width: auto;*/
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #c22;
+}
+
+form.content .category-picker {
+    display: none;
+}
+

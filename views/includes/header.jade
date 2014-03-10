@@ -1,0 +1,17 @@
+- var username = locals.username
+div#header
+  div#userInfo
+    unless locals.logged_in
+      a(href="/users/login") 登录
+      ||
+      a(href="/users/register") 注册
+    else
+      a(href="/users/#{username}")= username
+      ||
+      a(href="/users/logout") 退出
+  div.wrapper
+    a#siteLogo(href="/"): img(src="/images/logo.png")
+    form#siteSearch(action="/products")
+      input#siteSearchInput(type="text",placeholder="搜索商品", name="name")
+      button#siteSearchBtn(type="submit") 搜索
+  div#siteNav

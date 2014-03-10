@@ -1,0 +1,13 @@
+extends ../layout
+block content
+  ul
+    each user in users
+      unless user.isAdmin
+        li.box
+          h3=user.name || '无用户名'
+          p
+            span 厂商名：
+            =user.mfr && user.mfr.shortName || '未注册'
+            form(method="POST",action="/users/#{user._id}")
+              input(type="hidden", name="_method", value="delete")
+              input(type="submit", value="删除")

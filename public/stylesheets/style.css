@@ -1,0 +1,430 @@
+/*tmp*/
+.wrapper {
+    overflow: hidden;
+}
+
+/*layout*/
+/*header*/
+#header{
+    margin: 0 auto;
+    background: #b10000;
+    min-width: 990px;
+    /*padding: 0 10px 20px;*/
+    position: relative;
+    overflow: hidden;
+}
+
+#userInfo {
+
+    text-align: right;
+    margin: 10px 30px 15px;
+}
+#userInfo a {
+    color: white;
+    margin: 0 5px 0 5px;
+}
+
+#siteLogo {
+    float: left;
+    margin: 0 0 0 30px;
+}
+#siteSearch {
+    float: right;
+    margin: 0 30px;
+}
+#siteSearchInput {
+    float: left;
+    color: #000;
+    margin: 0;
+    width: 632px;
+    height: 20px;
+    line-height: 20px;
+    padding: 7px 3px 7px 5px;
+    border: 0 none;
+    border-radius: 2px 0 0 2px;
+    font-weight: 900;
+    /*background: url("data:image/gif;base64,R0lGODlhAQADAJEAAObm5t3d3ff39wAAACH5BAAAAAAALAAAAAABAAMAAAICDFQAOw==") repeat-x scroll 0 0 transparent;*/
+}
+
+
+#siteSearchBtn {
+    float: right;
+    width: 90px;
+    border: 0;
+    font-size: 14px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    color: #fff;
+    background: #462824 url(/images/index-sprites.png) 0 0 no-repeat;
+    background-position: 0 -111px;
+    line-height: 34px;
+    height: 34px;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+#siteSearchBtn:hover {
+    background-color: #866150;
+    background-position: -90px -111px;
+}
+#siteNav {
+    margin: 15px 0 0;
+    min-width: 990px;
+    height: 30px;
+    font-size: 14px;
+    background: #8e0000 url(data:image/gif;base64,R0lGODlhAQAeAIAAAI4AAI8BACH5BAAAAAAALAAAAAABAB4AAAIHRGChy+2KCgA7) repeat-x;
+}
+
+#main {
+    margin:  0 auto;
+    min-height: 88%;
+    position: relative;
+}
+
+
+
+
+#footer {
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    /*background-color: #b10000;*/
+    color: #616161;
+}
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /*font: 14px "宋体", "Lucida Grande", Helvetica, Arial, sans-serif;*/
+  font: 12px/1.5 'Lucida Grande',tahoma,arial,\5b8b\4f53;
+}
+
+
+
+
+/*normalize*/
+ul{
+    list-style: none;
+}
+
+
+
+
+/*effect*/
+/*#header, #footer {
+    box-shadow: 0px 1px 2px 1px rgba(128, 128, 128, 0.5);
+}*/
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+/*some list element:*/
+#control {
+    position: absolute;
+    z-index: 50;
+    margin: 15px 0 0 15px;
+    padding: 15px;
+    border: 3px solid #ddd;
+    right: 0;
+    top: 0;
+    background-color: white;
+}
+
+#title{
+    border-bottom: 1px solid #ccc;
+}
+
+
+/*#categories a {
+    *//*it seems that inline-element's vertical margin is ignored*//*
+    margin: 5px;
+    line-height: 24px;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #777;
+
+    box-shadow: 0px 1px 1px #ccc;
+}*/
+
+
+#message {
+    position: absolute;
+    left: 5px;
+    top: -120px;
+    z-index: 100;
+    padding: 5px 10px;
+    font-size: 1.5em;
+    color: #343434;
+    font-weight: bold;
+    background-color: rgba(255,255,255,.8);
+}
+
+
+#list {
+    margin: auto;
+    max-width: 1200px;
+    padding: 5px 10px 5px 10px;
+    overflow: hidden;
+}
+
+.item {
+    overflow: hidden;
+    float: left;
+    width: 227px;
+    height: 328px;
+    margin: 10px 0 10px 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #aaa;
+
+}
+.item a img {
+    width: 200px;
+}
+.item #imageContainer a {
+    display: block;
+    width: 200px;
+    height: 200px;
+    /*我想把其内图片垂直居中，怎么搞？*/
+    overflow: hidden;
+    padding: 10px;
+}
+.item #imageContainer{
+    overflow: hidden;
+}
+.item h3 {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 1em;
+}
+.item h3 a {
+    font-size: 1.5em;
+}
+.item .info li {
+    margin: 5px 0;
+}
+.item .info .categ {
+    text-align: right;
+    margin-right: 10px;
+}
+.item .info .mfr {
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+
+
+#control li {
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
+/*index page*/
+a.block {
+    margin: 5px 10px;
+
+}
+
+/*the details:*/
+
+/*the details page:*/
+#details, .bigForm, .check-results {
+    width: 600px;
+    margin: 0 auto;
+    padding: 30px 70px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    font-size: 14px;
+}
+
+
+#details ul li {
+    padding: 5px 0;
+    display: block;
+    overflow: hidden;
+    border-bottom: #eee 1px solid;
+}
+#details ul li span {
+}
+#details ul li span.label {
+    /* you can't assign a width to an inline element, only padding/margin
+    so you'll need to make it float so that you can give it a width.*/
+    float: left;
+    text-align: right;
+    clear: left;
+    width: 100px;
+    margin: 0 20px;
+}
+#details #desc {
+    float: left;
+    width: 70%;
+}
+#details #desc p{
+    margin-top: 0;
+}
+#details .control a {
+    margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*form*/
+fieldset {
+    margin: 10px auto;
+    width: 800px;
+}
+
+form input{
+    font-size: 100%;
+}
+
+form.main label {
+
+    width: 150px;
+    margin: 0 25px;
+    text-align: right;
+    float: left;
+    clear: left;
+}
+
+form.main input[type="submit"] {
+    margin: 0 0 0 20%;
+}
+
+form.main>div {
+    overflow: hidden;
+    margin: 25px 0;
+}
+
+form .hidden{
+    display: none;
+}
+
+/*form new item*/
+
+form.main label input {
+    width: 4em;
+}
+
+/*form warning*/
+/*form .msg {
+    color: red;
+    font-size: 80%;
+    margin-left: 20px;
+    padding-left: 25px;
+}
+form .error{
+    background: url('/images/icon-sprites.png') -61px -3px no-repeat;
+}
+
+form .correct {
+    color: #555;
+    background: url('/images/icon-sprites.png') -61px -53px no-repeat;
+
+}*/
+
+
+
+/*message fadeOut*/
+#message {
+    -webkit-animation: fadeOut 5s ease-in 1 alternate 0s forwards;
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@-webkit-keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* for sale (if large enough, isolate it)*/
+.check-results {
+    /* combine with #detail */
+}
+
+
+
+/*for pager:*/
+
+.hidden {
+    display: none;
+}
+
+.pager-centerd{
+    width:500px;
+    margin: 0 auto;
+}
+
+.pager ul{
+    display: block;
+    height: 1.5em;
+    margin-left: -0.3125em;
+}
+.pager li {
+    display: inline-block;
+    height: 1.5em;
+    color: #222222;
+    font-size: 1.5em;
+    /*font-size: 0.875em;*/
+    margin-left: 0.3125em;
+}
+.pager li a {
+    display: block;
+    padding: 0.0625em 0.4375em 0.0625em;
+    color: #999999;
+}
+
+
+.pager li.current a {
+    background: #2ba6cb;
+    color: white;
+    font-weight: bold;
+    cursor: default;
+}
+
+.pager li:hover a,
+.pager li a:focus {
+    background: #e6e6e6;
+}
+.pager li.current:hover a,
+.pager li.current a:focus {
+    background: #2ba6cb;
+}
+
+/*misc*/
+
+li.box {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}

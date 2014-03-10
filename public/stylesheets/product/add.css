@@ -1,0 +1,12 @@
+#categ-picker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    overflow: visible;
+}
+
+#categ-picker>p {
+    display: none;
+}
+
