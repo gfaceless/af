@@ -32,10 +32,10 @@ data1.forEach(function (el) {
 
 console.log(output);
 
-arr.forEach ( function (item, i) {
+data.forEach ( function (item, i) {
   // item 就是下面的 arr[i]
 })
 
-for(var i=0; i<arr.length; i++) {
+for(var i=0; i<data.length; i++) {
   // arr[i]就是 上面的item
 }

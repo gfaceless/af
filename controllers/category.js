@@ -1,173 +1,112 @@
 var mongoose = require('mongoose')
   , Schema = mongoose.Schema
   , ObjectId = Schema.Types.ObjectId
-  , assert = require('assert');
+  , assert = require('assert')
+  , _ = require('underscore')
+  , util = require('../lib/util')
+  , async = require('async')
 
-module.exports = exports = {
-  name: 'category',
-  plName: 'categories',
-  pathPrefix: 'manage',
-  idField: '_id'
-}
+
 
 
 var Category = mongoose.model('Category');
 
-exports.create = function (req, res) {
-  var content = req.body
-    , parentId = content.parentId;
 
-  var categ = new Category(content);
-
-  if (!parentId && !categ.isRoot) throw 'the one created without parentId should have `isRoot` being true';
-
-  categ.save(function (err, categ) {
-    if (err) throw err;
-
-    if (parentId) {
-      // TODO: maybe use findOneAndUpdate instead
-      Category.findById(parentId, function (err, parent) {
-        if (err) throw err;
-
-        if (!parent.children) {parent.children = []}
-
-        parent.children.push(categ);
-        parent.save(function (err, parent) {
-          if (err) throw err;
-          if (parent) {
-            if (req.xhr) {
-              res.send({success: true, doc: categ, child: categ, parent: parent});
-
-            } else {
-              req.flash('info', 'success');
-              res.redirect('back')
-            }
-          }
-          // I DO NOT KNOW when it will be here:
-          else {
-            if (req.xhr) {
-              res.send({success: false, child: categ, parent: parent});
-            } else {
-              req.flash('info', 'fail');
-              res.redirect('back')
-            }
-          }
+exports.create = function (req, res, next) {
+  // only xhr and json
+  var categories = req.body.categories
+    , category = req.body.category
+  var multi = _.isArray(categories);
+  if(!multi) {
+    if(!category) return next(500);
+    (new Category(category))
+      .save(function (err, cat) {
+        if (err) return next(err);
+        res.send({success: true, category: cat});
+        // maybe here we update
+        /*Category.buildTree(function (err, tree) {
+         req.app.locals.categories = tree;
+         });*/
+      });
+  } else {
+    var ret = [];
+    // actually we can use each instead of eachSeries
+    async.eachSeries(categories, function (cat, cb) {
+      (new Category(cat))
+        .save(function (err, cat) {
+          if (err) return cb(err);
+          ret.push(cat);
+          cb();
         });
-
-      })
-    } else {
-      res.send({success: true, doc: categ, message: 'root saved'});
-    }
-
-  })
+    }, function (err) {
+      if(err) return next(err)
+      res.send({success: true, categories: ret});
+    });
+  }
 }
 
+exports.update = function (req, res, next) {
+  var cat = req.body.category
+    , _id = req.params['_id']
+  if(!cat || !_id) return next('no params');
+
+  Category.findOne({_id: _id}, function (err, doc) {
+    if(err) return next(err);
 
 
+    util.extendDoc(doc, cat).save(function (err, doc) {
+      if(err) return next(err);
+      // should we modify product info here?
+      console.log(doc.parent);
+      console.log(doc);
+      res.send({success: true, category: doc});
 
-exports.populate2 = function () {
-
-  function pop (node){
-    if(node.children && node.children.length) {
-      Category.populate(node, {path: 'children'/*, model:'Ccategory'*/}
-        , function (err, node) {
-          if(err) throw err;
-          node.children.forEach(function(child){
-            pop(child);
-          })
-        }
-      )
-    }
-  }
-
-  Category.findOne({isRoot: true}, function (err, tree) {
-    if(err) throw err;
-    pop(tree);
-    setTimeout(function () {
-//      console.log(require('util').inspect(tree, {depth: null, colors: true}));
-      console.log('bla');
-      console.log(tree);
-    }, 5000);
-  });
+    })
+  })
 };
 
-exports.populate = function () {
 
-  var _popularize = function (node) {
-    if (!node || !node.children) return;
-    node.children.forEach(function (childId, i) {
-      Category.findById(childId, function (err, child) {
-        if (err) throw err;
-        if (child) {
-          node.children[i] = child;
-          _popularize(child);
-        }
-      })
-    })
-  }
 
-  Category.findOne({isRoot: true}, function (err, doc) {
-    if (err) throw err;
-    if (doc) {
-      exports.tree = doc;
-      _popularize(doc);
-    }
-  })
+
+
+
+exports.list = function (req, res, next) {
+
+  res.send(req.app.locals.categories);
+};
+
+//
+
+
+
+
+
+exports.edit = function (req, res) {
+  res.render('category/edit', {
+    title: '编辑类别'
+  });
 }
 
 
-exports.modify = function (req, res) {
-  res.render('category/modify', {
-    title: '编辑类别',
-    doc: exports.tree
+
+exports.refresh = function (req, res, next) {
+  Category.buildTree(function (err, tree) {
+    if(err) return next(err);
+    req.app.locals.categories = tree;
+    res.send({success: true, tree: tree});
   });
 
 }
 
-exports.tree = {};
 
-exports.refresh = function (req, res) {
-  exports.populate();
-  res.redirect('back');
-}
+exports.destroy = function (req, res, next) {
+  var _id = req.params._id;
+  console.log(_id);
+  if(_id){
+    Category.remove({ "$or" : [{_id: _id}, {parents: _id}] }, function (err, removed) {
+      if(err) return next(err);
 
-exports.destroy = function (req, res) {
-  var parentId = req.body.parentId
-    , _id = req.params['_id'];
-
-  if (!parentId) throw 404;
-
-  Category.findByIdAndUpdate(parentId, {$pull: {children: _id}}, function (err, parent) {
-    if (err) throw err;
-    if (parent) {
-      // TODO: recursively remove all children
-      Category.findByIdAndRemove(_id, function (err, remove) {
-        if (err) throw err;
-        if (remove) {
-          res.send({success: true, message: 'removed'});
-        } else {
-          res.send({success: false, message: 'cannot find the child to remove'});
-        }
-      });
-    } else {
-      res.send({success: false, message: 'cannot find the parent'});
-    }
-
-  })
-}
-
-exports.update = function (req, res) {
-  var _id = req.params['_id'];
-  Category.findById(_id, function (err, categ) {
-    if (err) throw err;
-    categ.name = req.body.name;
-    categ.save(function (err, categ) {
-      if (err) throw err;
-      res.send({success: true, doc: categ});
-      // where to handle failure?
-
+      res.send({success: !!removed});
     })
-  })
+  }
 }
-
-

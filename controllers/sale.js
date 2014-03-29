@@ -2,11 +2,13 @@ var mongoose = require('mongoose')
   , ObjectId = mongoose.Schema.Types.ObjectId
   , btoa = require('btoa')
   , Sale = mongoose.model('Sale')
-  , Product = mongoose.model('Product');
+  , Product = mongoose.model('Product')
+  , crypto = require('crypto')
+  , async = require('async')
 
 var isArray = require('util').isArray;
 
-exports.check = function (req, res) {
+/*exports.check = function (req, res) {
   var code = req.params.code;
   Sale.findOne({code: code}).exec(function (err, sale) {
     if(err) throw err;
@@ -27,9 +29,9 @@ exports.check = function (req, res) {
       })
     }
   })
-}
+}*/
 
-exports.upload = function (req, res) {
+exports.upload = function (req, resz) {
   var codes = req.body.codes
     , pid = req.body.pid
     , sales;
@@ -81,3 +83,100 @@ exports.prep = function (req, res, next) {
     next();
   })
 };
+
+exports.download = function (req, res, next) {
+  // POST
+  var count = req.body.count || 1;
+  count = count > 100 ? 100 : count;
+  var pid = req.params._id;
+  generateCode(pid, count, function (err, digests) {
+    if(err) return next(err);
+    var sales = digests.map(function (digest) {
+      return {
+        product: pid,
+        code: digest
+      }
+    });
+    Sale.create(sales, function (err, sale1, sale2, sale3) {
+      if(err) return next(err);
+      // console.log(sale1, sale2, sale3);
+      // if there's no err, we assume success (all arrays have been saved)
+      res.send(digests);
+    });
+  });
+};
+
+exports.check = function (req, res, next) {
+  var code = req.params.code;
+  var pid = req.params._id;
+  Sale.findOne({code: code}).exec(function (err, sale) {
+    if (err) return next(err);
+    if (!sale || sale.product.toString() !== pid) {
+      res.render('sale/check', {
+        title: "查询结果",
+        sale: null
+      });
+      return;
+    }
+    sale.queriedCount++;
+    if (!sale.queriedDate) sale.queriedDate = new Date();
+    if (!~sale.ips.indexOf(req.ip)) sale.ips.push(req.ip);
+    sale.save(function (err, sale) {
+      res.render('sale/check', {
+        title: "查询结果",
+        sale: sale
+      })
+    })
+
+  });
+}
+
+
+function generateCode(key, count, cb) {
+  // different syntax for easy use:
+  if(!cb && typeof count === 'function') {cb = count; count = 1;}
+
+  //if(count > 100) {throw new TypeError('too much generating-code for now !!')}
+  var fns = [];
+  var fn = function (cb) {
+    _generateSingleCode(key, cb);
+  };
+  while(count--) {fns.push( fn )}
+  // callback receives an err and an array
+  async.parallelLimit(fns, 20, cb);
+
+}
+
+function _generateSingleCode(key, cb) {
+  var sha2 = crypto.createHash('sha224');
+
+  crypto.randomBytes(48, function (err, r) {
+    if(err) return cb(err);
+    // default is utf8
+    // using base64 is unnecessary, only slows it down.
+    // it is here only for future reference.
+    var str = key + Date.now() + r.toString('base64');
+    sha2.update(str, 'utf8');
+    var digest = sha2.digest('base64');
+    // actually we could cut the last 3 `digits`, e.g "g==" "A=="
+    cb(null, digest.slice(0, -3));
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

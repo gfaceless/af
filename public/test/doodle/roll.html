@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        .slot {
+            overflow: hidden;
+            /*position: relative;*/
+            width: 70px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+        .teeth-wrapper {
+            /*overflow: hidden;*/
+        }
+        .teeth-wrapper div {
+            /*float to avoid margin collapse*/
+            float: left;
+            padding: 6px;
+            font-size: 35px;
+
+            margin: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="slot" data-number="5"></div>
+
+<script src="../zb/jquery.min.js"></script>
+<script src="jquery.ui.effect.js"></script>
+<script>
+    $(function () {
+        var num = 100;
+        var $dom = generateTeeth(num);
+        var $slot = $('.slot');
+        var number = $slot.text()
+        $slot.append($dom);
+
+        var $tmp = $('div', '.teeth-wrapper').first();
+        var w = $tmp.outerWidth(true);
+        var h = $tmp.outerHeight(true);
+        var containerWidth = $slot.width();
+        console.log(h);
+        console.log(containerWidth);
+        $slot.animate({'scrollTop': h * ( num - 2)}, {
+            duration: 4000,
+            easing: "easeInOutExpo"
+        });
+
+    });
+
+    function generateTeeth(num) {
+        var $domFragment = $('<div/>', {"class":"teeth-wrapper"})
+        for (var i= 0; i<num; i++) {
+            $domFragment.append($('<div/>', {text: i % 10}));
+        }
+        return $domFragment;
+    }
+
+
+</script>
+</body>
+</html>

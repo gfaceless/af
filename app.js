@@ -4,9 +4,18 @@ var express = require('express')
   , dbConnector = require('./libs/db')
   , flash = require('connect-flash')
   , combo = require('combohandler')
-  , error = require('./controllers/error');
+  , error = require('./controllers/error')
+  , fs = require('fs')
+  , mongoose = require('mongoose')
 
 require('./lib/mongoose');
+
+// Bootstrap models
+var models_path = __dirname + '/app/models';
+fs.readdirSync(models_path).forEach(function (file) {
+  if (~file.indexOf('.js')) require(models_path + '/' + file)
+})
+var Category = mongoose.model('Category');
 
 var app = express();
 
@@ -30,9 +39,6 @@ var locals = function (req, res, next) {
     isAdmin: req.session.isAdmin,
     // isSelf: false,
     expose: {},
-    categories: require('./controllers/category.js').tree,
-
-
   });
   next();
 };
@@ -41,7 +47,8 @@ var locals = function (req, res, next) {
 //app.set('env', 'production');
 console.log('current env is: ' + app.settings.env);
 
-app.configure(function () {
+app
+  .configure(function () {
     this.set('port', process.env.PORT || 3002)
       .set('views', __dirname + '/views')
       .set('view engine', 'jade')
@@ -67,7 +74,6 @@ app.configure(function () {
       .use(express.session({secret: 'some secret word', maxAge: 7 * 24 * 60 * 60 * 1000 }))
 
       .use(flash())
-      .use(locals)
 
       .use(express.methodOverride())
       // app.use(allowCrossDomain);
@@ -76,10 +82,11 @@ app.configure(function () {
       // Note that if you don't explicitly use the router,
       // it is implicitly added by Express at the point you define a route
       // (which is why your routes still worked even though you commented out app.use(app.router)).
-      //TODO: router and static, which is first??
+      //TODO: router and static, which is first?? maybe for finer control, router should go first
+      .use(express.static(path.join(__dirname, 'public')))
+      .use(locals)
       .use(app.router)
 
-      .use(express.static(path.join(__dirname, 'public')))
 //        .use(express.directory(__dirname + '/public'))
 
     /*app.use(function (err, req, res, next) {
@@ -97,9 +104,9 @@ app.configure(function () {
 require('./routes')(app);
 
 
-app.get('/yui3', combo.combine({rootPath: __dirname + '/public/yui'}), function (req, res) {
+/*app.get('/yui3', combo.combine({rootPath: __dirname + '/public/yui'}), function (req, res) {
   res.send(res.body);
-});
+});*/
 
 
 //if no url match, here it is:
@@ -118,12 +125,21 @@ app.configure('production', function () {
 app.locals.pretty = true;
 
 
+
+
+
 dbConnector.open(function (err) {
-  if (err) {throw err;}
-  http.createServer(app).listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-    require('./controllers/category.js').populate();
+  if (err) throw err;
+  // we populate category before application starts:
+  Category.buildTree(function (err, tree) {
+    if(err) throw err;
+    // rename it?
+    app.locals.categories = tree;
+    http.createServer(app).listen(app.get('port'), function () {
+      console.log("Express server listening on port " + app.get('port'));
+    });
   });
+
 });
 
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="Jcrop/css/jquery.Jcrop.min.css"/>
+    <title></title>
+    <script src="../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../vendor/blueimp-canvas-to-blob/js/canvas-to-blob.js"></script>
+    <script src="../vendor/blueimp-load-image/js/load-image.min.js"></script>
+    <script src="../vendor/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+
+    <script src="../vendor/jquery-file-upload/js/jquery.fileupload.js"></script>
+    <script src="../vendor/jquery-file-upload/js/jquery.fileupload-process.js"></script>
+    <script src="../vendor/jquery-file-upload/js/jquery.fileupload-image.js"></script>
+    <script src="Jcrop/js/jquery.Jcrop.min.js"></script>
+
+</head>
+<body>
+    <input type="file" name="files" data-url="/test-upload"/>
+    <script>
+        $(function () {
+            $('input').fileupload({
+                dataType: 'json',
+                disableImageResize: /Android(?!.*Chrome)|Opera/
+                        .test(window.navigator && navigator.userAgent),
+                imageMaxWidth: 800,
+                imageMaxHeight: 800,
+                imageCrop: true // Force cropped images
+            });
+            $('input').on('change', function (e) {
+                /*loadImage(
+                        e.target.files[0],
+                        function (img) {
+                            document.body.appendChild(img);
+                        },
+                        {maxWidth: 600} // Options
+                );*/
+                var f = e.target.files[0];
+                if(f){
+                    loadImage.parseMetaData(f, function (data) {
+                        if(data.exif){
+                            var allTags = data.exif.getAll();
+                            console.log(allTags);
+                            loadImage(data.exif.get('Thumbnail'), function (img) {
+                                $('body').append(img);
+                            });
+                        }
+                    });
+                }
+
+
+            });
+        });
+
+    </script>
+</body>
+</html>

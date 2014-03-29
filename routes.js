@@ -23,22 +23,12 @@ var mongoose = require('mongoose')
 
 function startRoute(app) {
 
-  // test:
 
-  app.get('/hello', product.hello2);
-  app.post('/test2', function (req, res, next) {
-    res.send(JSON.stringify(true));
-  }).post ('/test3', function (req, res) {
-    console.log(req.body);
-    res.send('ok');
-  })
+
   app.post('/test-upload', function (req, res,next) {
     console.log(req.files);
     setTimeout(function(){res.send(req.files);}, 5000);
   });
-
-
-
 
 
 
@@ -101,16 +91,30 @@ function startRoute(app) {
   app.put('/mfrs/:_id/edit', requireSelf, mfr.update);
 
 
-  app.get('/sales', requireSelf, sale.list)
-  app.get('/sales/:code', sale.check)
-  app.post('/sales', sale.upload)
+//  app.get('/sales/:code', sale.check)
+//  app.post('/sales', sale.upload)*/
+
+
+  app.get('/sales', requireSelf, sale.list);
+  app.get('/sales/:_id/:code', checkId, sale.check);
+  app.post('/sales/:_id'/*, requireSelf*/, sale.upload);
+  app.post('/sales/:_id/download', sale.download);
+
 
   app.all('/manage/*', requireAdmin);
-  app.get('/manage/categories', category.modify);
-  app.post('/manage/categories/refresh', category.refresh);
-  app.get('/manage/category/test', category.populate2);
 
-  var route = function (app, controllers) {
+  // we use singular: (would like to use singular in the future)
+  app.post('/manage/category', category.create);
+  app.get('/manage/category', category.list);
+  app.get('/manage/category/edit', category.edit);
+  app.del('/manage/category/:_id', category.destroy);
+  app.put('/manage/category/:_id', category.update);
+  app.post('/manage/category/refresh', category.refresh);
+
+
+
+
+  /*var route = function (app, controllers) {
 
     var fns = {
       //crud
@@ -149,7 +153,7 @@ function startRoute(app) {
       })
     })
   }
-  route(app, [category]);
+  route(app, [category]);*/
 
 }
 
