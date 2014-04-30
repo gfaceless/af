@@ -20,28 +20,29 @@
 
     margin: 0 auto;
     padding: @list-padding;
+    @scrollbar-width : 50px;
 
     // TODO: USE FUNCTION
     @w1: (@item-occupied * 1 + @list-padding * 2) + @my-border-width * 2;
-    @media (min-width: @w1 ){
+    @media (min-width: (@w1 + @scrollbar-width) ){
         width: @w1;
     }
 
     @w2: (@item-occupied * 2 + @list-padding * 2 + @my-border-width * 2);
-    @media (min-width: @w2 ){
+    @media (min-width: (@w2 + @scrollbar-width)){
         width: @w2;
     }
     @w3: (@item-occupied * 3 + @list-padding * 2 + @my-border-width * 2);
-    @media (min-width: @w3 ){
+    @media (min-width: (@w3 + @scrollbar-width)){
         width: @w3;
     }
     @w4: (@item-occupied * 4 + @list-padding * 2 + @my-border-width * 2);
-    @media (min-width: @w4 ){
+    @media (min-width: (@w4 + @scrollbar-width) ){
         width: @w4;
     }
 
     @w5: (@item-occupied * 5 + @list-padding * 2 + @my-border-width * 2);
-    @media (min-width: @w5 ){
+    @media (min-width: (@w5 + @scrollbar-width) ){
         width: @w5;
     }
     .no-results {
