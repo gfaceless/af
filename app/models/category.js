@@ -26,8 +26,8 @@ catSchema.virtual('parent').set(function (value) {
 
 // TODO: we can actually remove parents[], remove id or _id ? using transform option
 catSchema
-  .set('toJSON', { getters: true })
-  .set('toObject', { getters: true });
+  .set('toJSON', { getters: true, minimize : true })
+  .set('toObject', { getters: true, minimize : true });
 
 
 catSchema.pre('save', function (next) {
@@ -59,7 +59,7 @@ catSchema.statics.buildTree = function ( cb ) {
     if (err) return cb(err);
     if (!root)
     {
-      root = new model({name: '根', level: 0, parents: []});
+      root = new model({name: '全部商品分类', level: 0, parents: []});
       root.save(function (err) {
         if(err) return cb(err);
         cb(new Error('we should have a root, and ... created'));

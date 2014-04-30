@@ -1,0 +1,70 @@
+extends ../layout
+include ../include/form
+
+if validationOpt
+    append template
+        script#val-options(type="template/text")!=validationOpts
+
+
+append js-bottom
+    script(src="/js/vendor/jquery-validation.js")
+    script(src="/js/product/product.js")
+
+
+block content
+    //- we always assume that as long as product exists, product.categories exists and is an array:
+    -var cat = product ? ( product.categories[0] ? product.categories[0] : '未分类' ) : null
+    //- but we do not assume product.images is an array when product exists:
+    -var imgSrc = product ? ( product.images ? product.images[0] : null ) : null
+    -var extra = product ? product.extra : undefined;
+
+    //- enctype="multipart/form-data" would be changed on the fly.
+    //- TODO: use the jquery-file-upload library for better implementation
+    form.main-content.form-horizontal(method="POST")
+        if product
+            input(type="hidden", name="_method", value="put")
+        +formItem("产品名称")(id="p-name", name="product[name]", value = product && product.name)
+
+
+        div.form-set
+            label.form-label 产品种类:
+            .input-wrapper.has-feedback.category-picker
+                button.btn-select(type="button") 选择种类
+                span.category-selected= cat ? cat.name : '未选择'
+                input(type="hidden", name="product[categories][0]", value= cat ? cat._id : '')
+                include ../category/list
+                span.indicator-ok
+                span.indicator-remove
+            .error-wrapper
+
+        +formItem("产品描述", "textarea")(rows="6", id="p-desc", name="product[desc]", value = product && product.desc)
+        +formItem("图片")(id="img-upload", type="file", name="image")
+        div.img-container
+            if(imgSrc)
+                img(src= '/' + imgSrc)
+
+        .controls
+            .btns-wrapper
+                button.btn-more(type="button") 更多可选
+                button.btn-add(type="button") 添加自定义信息
+
+        div.info-more(class= product ? "" : "easy-hidden")
+            +formItem("产品重量")(id="p-weight", name="product[weight]", value = product && product.weight)
+            +formItem("上市日期")(id="p-date", name="product[date]", value = product && product.date)
+            +formItem("产地")(id="p-made-in", name="product[made-in]", value = product && product["made-in"])
+
+        div.info-added
+            if extra
+                each val, key in extra
+                    //- TODO: I don't want to have similar code in TWO places. maybe learn Angular or some MV* frameworks
+                    div.form-set
+                        .label-input-wrapper: input.form-control(type="text", value=key)
+                        .input-wrapper
+                            input.form-control(type="text", name="product[extra][" + key + "]", value=val)
+                            //- after back-end be cleaner, we'll enable deletion of custom data:
+                            //- button.form-set-remove(type="button"): span
+
+        .controls
+            .btns-wrapper
+                button.btn-save(type="submit")= product ? '保存' : '提交'
+                button.btn-back(type="button") 返回

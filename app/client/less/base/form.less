@@ -1,0 +1,92 @@
+@import "bs";
+
+@import  "less/forms";
+@import (reference) "less/grid";
+
+@import "bs-override";
+@import (reference) "less/alerts";
+@import "less/glyphicons";
+@import (reference) "less/buttons";
+
+
+// cascade .main-content (in body.less)
+form.main-content {
+
+    position: relative;
+
+    max-width: 650px;
+    min-width: 400px;
+
+}
+
+.category-picker {
+    .categories-menu {
+        .hidden;
+    }
+}
+
+
+@label-col: 2.5;
+@input-col: 6;
+@error-col: 3.5;
+
+// renamed .form-group to prevent future confusing:
+.form-set  {
+
+    &:extend(.form-group all);
+    > .form-label {
+        .make-xs-column(@label-col);
+    }
+
+    > .input-wrapper {
+        .make-xs-column(@input-col);
+    }
+    > .error-wrapper {
+        .make-xs-column(@error-col);
+    }
+}
+
+// we do it separately since `.has-error .control-label` style cannot be properly inherited if
+// we merged this into above block, then the extended result would be `.has-error .form-group > .form-label`, which did nothing
+.form-label {
+    &:extend(.control-label all);
+}
+
+
+form.main-content{
+    .controls .btns-wrapper {
+        .make-xs-column(@label-col + @input-col);
+        text-align: right;
+    }
+}
+
+//--- FORM VALIDATION -----
+
+.indicator-ok, .indicator-remove{
+    &:extend(.form-control-feedback all);
+    &:extend(.glyphicon);
+}
+.indicator-ok:extend(.glyphicon-ok all){}
+.indicator-remove:extend(.glyphicon-remove all){}
+
+
+label.has-error{
+    .alert();
+    .alert-danger();
+    position: absolute;
+    top: -5px;
+}
+
+.has-feedback {
+    .indicator-ok, .indicator-remove{
+        display: none;
+    }
+}
+
+
+
+.has-success .indicator-ok, .has-error .indicator-remove{
+    display: block !important;
+}
+
+

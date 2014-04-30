@@ -1,0 +1,56 @@
+extends ../layout
+append css
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/vendor/ladda-bootstrap/dist/ladda-themeless.css')
+    link(rel='stylesheet', href='/css/sale/batch-download.css')
+append js-bottom
+    script(src="/js/vendor/lodash.js")
+    script(src="/js/sale/batch-download.js")
+
+
+block content
+    form#qr-form
+        .form-inline
+            .form-group
+                label.control-label(for="qr-dimension") 尺寸
+                input.form-control#qr-dimension(type="text", name="size")
+                span.form-control-static (px)
+            .form-group
+                //- error correction level
+                label.control-label(for="qr-ecl") 容错级
+                select.form-control#qr-ecl(name="ecl")
+                    option(value="L") 低(7%)
+                    option(value="M") 中(15%)
+                    option(value="Q") 中高(25%)
+                    option(selected,value="H") 高(30%)
+        .form-inline
+            .form-group
+                label(for="qr-margin") 间隔
+                input.form-control#qr-margin(type="text",name="margin")
+                span.form-control-static (px)
+            .form-group
+                label(for="qr-cols") 列数
+                input.form-control#qr-cols(type="text",name="cols")
+            .form-group
+                label(for="qr-rows") 行数
+                input.form-control#qr-rows(type="text",name="rows")
+        .form-inline
+            .form-group
+                span.form-control-static
+                    span 总共数量:
+                    span.bg-info.qr-amount
+            .form-group
+                span.form-control-static
+                    span 共宽:
+                    span.bg-info.qr-width
+                    span (px)
+            .form-group
+                span.form-control-static
+                    span 共长:
+                    span.bg-info.qr-height
+                    span (px)
+        div
+            button.btn.btn-primary.btn-lg.ladda-button(type="submit",data-style="expand-right")
+                span.ladda-label 生成图片
+            button.qr-download.disabled(type="button") 下载
+            button.qr-clear(type="button") 清空

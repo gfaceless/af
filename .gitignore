@@ -219,6 +219,9 @@ pip-log.txt
 .idea/
 
 node_modules/
-vendor/
+public/vendor/
 yui/
 test/
+
+.sass-cache/
+bower_components/

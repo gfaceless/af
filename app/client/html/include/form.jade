@@ -1,0 +1,16 @@
+mixin formItem(labelName, type)
+    -var className = [attributes.class, attributes.type == "file" ? "" : "form-control" ]
+    -textarea = type == 'textarea'
+    .form-set
+        label.form-label(for=attributes.id)= labelName
+        .input-wrapper(class= textarea ? "" : "has-feedback")
+            if !textarea
+                // HOW TO AUTOMATICALLY ITERATE??
+                input(class=className, id= attributes.id, type= attributes.type || "text", name=attributes.name, value=attributes.value)
+                span.indicator-ok
+                span.indicator-remove
+            else
+                //- so there are two ways to pass value to textarea: through block or through `value` attribute.
+                textarea(class=className, id= attributes.id, rows=attributes.rows, name=attributes.name)= attributes.value
+        .error-wrapper
+

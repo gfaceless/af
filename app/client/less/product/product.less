@@ -1,0 +1,32 @@
+.category-picker {
+    .category-selected {
+        margin-left: 9px;
+        padding: 8px;
+        border: @my-border;
+    }
+    .category-menu {
+        left: -170px;
+        display: none;
+    }
+}
+// dynamic form-set:
+.form-set-remove{
+    &:extend(.btn);
+    &:extend(.btn-default);
+    position: absolute;
+    right: -35px;
+    top: 0px;
+    span {
+        &:extend(.glyphicon);
+        &:extend(.glyphicon-remove all);
+    }
+}
+
+.label-input-wrapper{
+    &:extend(.form-set > .form-label);
+    input {text-align: right;}
+}
+
+.btn-more, .btn-select {
+    &:extend(.btn-save);
+}

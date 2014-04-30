@@ -1,0 +1,395 @@
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.form-control::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #999999;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999999;
+}
+select.input-sm {
+  height: 30px;
+  line-height: 30px;
+}
+textarea.input-sm,
+select[multiple].input-sm {
+  height: auto;
+}
+select.input-lg {
+  height: 46px;
+  line-height: 46px;
+}
+textarea.input-lg,
+select[multiple].input-lg {
+  height: auto;
+}
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline {
+  color: #3c763d;
+}
+.has-success .form-control {
+  border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.has-success .form-control:focus {
+  border-color: #2b542c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
+}
+.has-success .input-group-addon {
+  color: #3c763d;
+  border-color: #3c763d;
+  background-color: #dff0d8;
+}
+.has-success .form-control-feedback {
+  color: #3c763d;
+}
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline {
+  color: #8a6d3b;
+}
+.has-warning .form-control {
+  border-color: #8a6d3b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.has-warning .form-control:focus {
+  border-color: #66512c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
+}
+.has-warning .input-group-addon {
+  color: #8a6d3b;
+  border-color: #8a6d3b;
+  background-color: #fcf8e3;
+}
+.has-warning .form-control-feedback {
+  color: #8a6d3b;
+}
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline {
+  color: #a94442;
+}
+.has-error .form-control {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.has-error .form-control:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+}
+.has-error .input-group-addon {
+  color: #a94442;
+  border-color: #a94442;
+  background-color: #f2dede;
+}
+.has-error .form-control-feedback {
+  color: #a94442;
+}
+#qr-form button:not([type=submit]) {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.btn-default.disabled,
+.btn-default[disabled],
+fieldset[disabled] .btn-default,
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled:active,
+.btn-default[disabled]:active,
+fieldset[disabled] .btn-default:active,
+.btn-default.disabled.active,
+.btn-default[disabled].active,
+fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.btn-default .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
+#qr-form button:not([type=submit]) {
+  color: #ffffff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn-primary .badge {
+  color: #428bca;
+  background-color: #ffffff;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.open .dropdown-toggle.btn-success {
+  color: #ffffff;
+  background-color: #47a447;
+  border-color: #398439;
+}
+.btn-success:active,
+.btn-success.active,
+.open .dropdown-toggle.btn-success {
+  background-image: none;
+}
+.btn-success.disabled,
+.btn-success[disabled],
+fieldset[disabled] .btn-success,
+.btn-success.disabled:hover,
+.btn-success[disabled]:hover,
+fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus,
+.btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:focus,
+.btn-success.disabled:active,
+.btn-success[disabled]:active,
+fieldset[disabled] .btn-success:active,
+.btn-success.disabled.active,
+.btn-success[disabled].active,
+fieldset[disabled] .btn-success.active {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-success .badge {
+  color: #5cb85c;
+  background-color: #ffffff;
+}
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info.active,
+.open .dropdown-toggle.btn-info {
+  color: #ffffff;
+  background-color: #39b3d7;
+  border-color: #269abc;
+}
+.btn-info:active,
+.btn-info.active,
+.open .dropdown-toggle.btn-info {
+  background-image: none;
+}
+.btn-info.disabled,
+.btn-info[disabled],
+fieldset[disabled] .btn-info,
+.btn-info.disabled:hover,
+.btn-info[disabled]:hover,
+fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus,
+.btn-info[disabled]:focus,
+fieldset[disabled] .btn-info:focus,
+.btn-info.disabled:active,
+.btn-info[disabled]:active,
+fieldset[disabled] .btn-info:active,
+.btn-info.disabled.active,
+.btn-info[disabled].active,
+fieldset[disabled] .btn-info.active {
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-info .badge {
+  color: #5bc0de;
+  background-color: #ffffff;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.open .dropdown-toggle.btn-warning {
+  color: #ffffff;
+  background-color: #ed9c28;
+  border-color: #d58512;
+}
+.btn-warning:active,
+.btn-warning.active,
+.open .dropdown-toggle.btn-warning {
+  background-image: none;
+}
+.btn-warning.disabled,
+.btn-warning[disabled],
+fieldset[disabled] .btn-warning,
+.btn-warning.disabled:hover,
+.btn-warning[disabled]:hover,
+fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus,
+.btn-warning[disabled]:focus,
+fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled:active,
+.btn-warning[disabled]:active,
+fieldset[disabled] .btn-warning:active,
+.btn-warning.disabled.active,
+.btn-warning[disabled].active,
+fieldset[disabled] .btn-warning.active {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn-warning .badge {
+  color: #f0ad4e;
+  background-color: #ffffff;
+}
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  color: #ffffff;
+  background-color: #d2322d;
+  border-color: #ac2925;
+}
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-image: none;
+}
+.btn-danger.disabled,
+.btn-danger[disabled],
+fieldset[disabled] .btn-danger,
+.btn-danger.disabled:hover,
+.btn-danger[disabled]:hover,
+fieldset[disabled] .btn-danger:hover,
+.btn-danger.disabled:focus,
+.btn-danger[disabled]:focus,
+fieldset[disabled] .btn-danger:focus,
+.btn-danger.disabled:active,
+.btn-danger[disabled]:active,
+fieldset[disabled] .btn-danger:active,
+.btn-danger.disabled.active,
+.btn-danger[disabled].active,
+fieldset[disabled] .btn-danger.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-danger .badge {
+  color: #d9534f;
+  background-color: #ffffff;
+}
+#temp-qr-container {
+  display: none;
+}
+canvas {
+  display: block;
+  margin: 20px auto;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+  -moz-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+  box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+}
+#qr-form {
+  width: 700px;
+  padding: 50px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+}
+#qr-form .form-inline {
+  margin-bottom: 30px;
+}
+#qr-form .form-group {
+  margin-right: 50px;
+}
+#qr-form input[type=text] {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  width: 50px;
+}
+select#qr-form input[type=text] {
+  height: 30px;
+  line-height: 30px;
+}
+textarea#qr-form input[type=text],
+select[multiple]#qr-form input[type=text] {
+  height: auto;
+}
+#qr-form .bg-info {
+  padding: 4px 9px;
+}
+#qr-form button[type=submit] {
+  margin-right: 30px;
+}
+/*# sourceMappingURL=data:application/json,%7B%22version%22%3A3%2C%22sources%22%3A%5B%22bower_components%2Fbootstrap%2Fless%2Fmixins.less%22%2C%22bower_components%2Fbootstrap%2Fless%2Fforms.less%22%2C%22e%3A%2Fcodes%2Fnodejs%2Faf%2Fapp%2Fclient%2Fless%2Fsale%2Fbatch-download.less%22%2C%22bower_components%2Fbootstrap%2Fless%2Fbuttons.less%22%5D%2C%22names%22%3A%5B%5D%2C%22mappings%22%3A%22AAm4BE%2CaAAC%3BEACC%2CqBAAA%3BEACA%2CUAAA%3BEA5wBF%2CsFAAA%3BEACQ%2C8EAAA%3B%3BAAlER%2CaAAC%3BEAA%2BB%2CcAAA%3BEACA%2CUAAA%3B%3BAAChC%2CaAAC%3BEAA%2BB%2CcAAA%3B%3BAAChC%2CaAAC%3BEAA%2BB%2CcAAA%3B%3BAA41BhC%2CMAAM%3BEACJ%2CYAAA%3BEACA%2CiBAAA%3B%3BAAGF%2CQAAQ%3BAACR%2CMAAM%2CUAAU%3BEACd%2CYAAA%3B%3BAAPF%2CMAAM%3BEACJ%2CYAAA%3BEACA%2CiBAAA%3B%3BAAGF%2CQAAQ%3BAACR%2CMAAM%2CUAAU%3BEACd%2CYAAA%3B%3BAC9nBJ%2CYDsjBE%3BACtjBF%2CYDujBE%3BACvjBF%2CYDwjBE%3BACxjBF%2CYDyjBE%3BACzjBF%2CYD0jBE%3BAC1jBF%2CYD2jBE%3BEACE%2CcAAA%3B%3BAC5jBJ%2CYD%2BjBE%3BEACE%2CqBAAA%3BEAvuBF%2CwDAAA%3BEACQ%2CgDAAA%3B%3BAAwuBN%2CYAHF%2CcAGG%3BEACC%2CqBAAA%3BEA1uBJ%2CyEAAA%3BEACQ%2CiEAAA%3B%3BACsKV%2CYDykBE%3BEACE%2CcAAA%3BEACA%2CqBAAA%3BEACA%2CyBAAA%3B%3BAC5kBJ%2CYD%2BkBE%3BEACE%2CcAAA%3B%3BAC7kBJ%2CYDmjBE%3BACnjBF%2CYDojBE%3BACpjBF%2CYDqjBE%3BACrjBF%2CYDsjBE%3BACtjBF%2CYDujBE%3BACvjBF%2CYDwjBE%3BEACE%2CcAAA%3B%3BACzjBJ%2CYD4jBE%3BEACE%2CqBAAA%3BEAvuBF%2CwDAAA%3BEACQ%2CgDAAA%3B%3BAAwuBN%2CYAHF%2CcAGG%3BEACC%2CqBAAA%3BEA1uBJ%2CyEAAA%3BEACQ%2CiEAAA%3B%3BACyKV%2CYDskBE%3BEACE%2CcAAA%3BEACA%2CqBAAA%3BEACA%2CyBAAA%3B%3BACzkBJ%2CYD4kBE%3BEACE%2CcAAA%3B%3BAC1kBJ%2CUDgjBE%3BAChjBF%2CUDijBE%3BACjjBF%2CUDkjBE%3BACljBF%2CUDmjBE%3BACnjBF%2CUDojBE%3BACpjBF%2CUDqjBE%3BEACE%2CcAAA%3B%3BACtjBJ%2CUDyjBE%3BEACE%2CqBAAA%3BEAvuBF%2CwDAAA%3BEACQ%2CgDAAA%3B%3BAAwuBN%2CUAHF%2CcAGG%3BEACC%2CqBAAA%3BEA1uBJ%2CyEAAA%3BEACQ%2CiEAAA%3B%3BAC4KV%2CUDmkBE%3BEACE%2CcAAA%3BEACA%2CqBAAA%3BEACA%2CyBAAA%3B%3BACtkBJ%2CUDykBE%3BEACE%2CcAAA%3B%3BAEh2BJ%2CQAoBE%2COAAM%2CIAAI%3BEC3BV%2CqBAAA%3BEACA%2CgBAAA%3BEACA%2CmBAAA%3BEACA%2CkBAAA%3BEACA%2CsBAAA%3BEACA%2CeAAA%3BEACA%2CsBAAA%3BEACA%2C6BAAA%3BEACA%2CmBAAA%3BEH0gBA%2CiBAAA%3BEACA%2CeAAA%3BEACA%2CuBAAA%3BEACA%2CkBAAA%3BEAnSA%2CyBAAA%3BEACG%2CsBAAA%3BEACC%2CqBAAA%3BEACI%2CiBAAA%3B%3BAAyPR%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CYAHD%3BAAGC%2CYAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CYAJD%2CSAIE%3BAAAD%2CYAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CaAEhB%3BAACD%2CYALD%2CSAKE%3BAAAD%2CYAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CaAGhB%3BAACD%2CYAND%2CSAME%3BAAAD%2CYALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CaAIhB%3BAACD%2CYAPD%2CSAOE%3BAAAD%2CYAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CaAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAGtdV%2CYH0dE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAEpgBJ%2CQAoBE%2COAAM%2CIAAI%3BEF%2BcV%2CcAAA%3BEACA%2CyBAAA%3BEACA%2CqBAAA%3B%3BAAEA%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CYAHD%3BAAGC%2CYAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CYAJD%2CSAIE%3BAAAD%2CYAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CaAEhB%3BAACD%2CYALD%2CSAKE%3BAAAD%2CYAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CaAGhB%3BAACD%2CYAND%2CSAME%3BAAAD%2CYALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CaAIhB%3BAACD%2CYAPD%2CSAOE%3BAAAD%2CYAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CaAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAGndV%2CYHudE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAA7BF%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CYAHD%3BAAGC%2CYAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CYAJD%2CSAIE%3BAAAD%2CYAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CaAEhB%3BAACD%2CYALD%2CSAKE%3BAAAD%2CYAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CaAGhB%3BAACD%2CYAND%2CSAME%3BAAAD%2CYALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CaAIhB%3BAACD%2CYAPD%2CSAOE%3BAAAD%2CYAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CaAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAG%2FcV%2CYHmdE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAA7BF%2CSAAC%3BAACD%2CSAAC%3BAACD%2CSAAC%3BAACD%2CSAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CSAAC%3BAACD%2CSAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CSAHD%3BAAGC%2CSAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CSAJD%2CSAIE%3BAAAD%2CSAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CUAEhB%3BAACD%2CSALD%2CSAKE%3BAAAD%2CSAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CUAGhB%3BAACD%2CSAND%2CSAME%3BAAAD%2CSALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CUAIhB%3BAACD%2CSAPD%2CSAOE%3BAAAD%2CSAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CUAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAG3cV%2CSH%2BcE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAA7BF%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CYAAC%3BAACD%2CYAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CYAHD%3BAAGC%2CYAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CYAJD%2CSAIE%3BAAAD%2CYAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CaAEhB%3BAACD%2CYALD%2CSAKE%3BAAAD%2CYAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CaAGhB%3BAACD%2CYAND%2CSAME%3BAAAD%2CYALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CaAIhB%3BAACD%2CYAPD%2CSAOE%3BAAAD%2CYAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CaAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAGvcV%2CYH2cE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAA7BF%2CWAAC%3BAACD%2CWAAC%3BAACD%2CWAAC%3BAACD%2CWAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CcAAA%3BEACA%2CyBAAA%3BEACI%2CqBAAA%3B%3BAAEN%2CWAAC%3BAACD%2CWAAC%3BAACD%2CKAAM%2CiBAAgB%3BEACpB%2CsBAAA%3B%3BAAKA%2CWAHD%3BAAGC%2CWAFD%3BAAEC%2CQADM%2CUAAW%3BAAEjB%2CWAJD%2CSAIE%3BAAAD%2CWAHD%2CUAGE%3BAAAD%2CQAFM%2CUAAW%2CYAEhB%3BAACD%2CWALD%2CSAKE%3BAAAD%2CWAJD%2CUAIE%3BAAAD%2CQAHM%2CUAAW%2CYAGhB%3BAACD%2CWAND%2CSAME%3BAAAD%2CWALD%2CUAKE%3BAAAD%2CQAJM%2CUAAW%2CYAIhB%3BAACD%2CWAPD%2CSAOE%3BAAAD%2CWAND%2CUAME%3BAAAD%2CQALM%2CUAAW%2CYAKhB%3BEACC%2CyBAAA%3BEACI%2CqBAAA%3B%3BAGncV%2CWHucE%3BEACE%2CcAAA%3BEACA%2CyBAAA%3B%3BAE%2FgBJ%3BEACE%2CaAAA%3B%3BAAGF%3BEACE%2CcAAA%3BEACA%2CiBAAA%3BEACA%2C0DAAA%3BEACA%2CuDAAA%3BEACA%2CkDAAA%3B%3BAAEF%3BEACE%2CYAAA%3BEACA%2CaAAA%3BEACA%2CiBAAA%3BEACA%2CsBAAA%3B%3BAAJF%2CQAME%3BEACE%2CmBAAA%3B%3BAAPJ%2CQASE%3BEACE%2CkBAAA%3B%3BAAVJ%2CQAaE%2CMAAK%3BEFo3BL%2CYAAA%3BEACA%2CiBAAA%3BEACA%2CeAAA%3BEACA%2CgBAAA%3BEACA%2CkBAAA%3BEEt3BE%2CWAAA%3B%3BAFw3BF%2CMAAM%2CQE13BN%2CMAAK%3BEF23BH%2CYAAA%3BEACA%2CiBAAA%3B%3BAAGF%2CQAAQ%2CQE%2F3BR%2CMAAK%3BAFg4BL%2CMAAM%2CUAAU%2CQEh4BhB%2CMAAK%3BEFi4BH%2CYAAA%3B%3BAE94BJ%2CQAiBE%3BEACE%2CgBAAA%3B%3BAAlBJ%2CQAyBE%2COAAM%3BEACJ%2CkBAAA%22%7D */

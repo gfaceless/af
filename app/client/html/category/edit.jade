@@ -1,0 +1,42 @@
+extends ../layout
+
+block template
+    script#tree-data(type="template/text")!=JSON.stringify(categories)
+
+
+append js-bottom
+    script(src="/vendor/bootstrap/dist/js/bootstrap.js")
+    script(src="/js/category-model.js")
+    script(src="/js/category-edit.js")
+
+
+append css
+    link(rel='stylesheet', href='/vendor/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/css/category-edit.css')
+
+block content
+    #folder-app.container-fluid
+        .row
+            #tree-view.col-md-4
+            #details-view.col-md-8
+                #metadata.container-fluid
+                    ol.breadcrumb
+                    .info
+                .control.container-fluid.clearfix
+                    .btn-group
+                        button(type=button).btn.btn-default.batch-add 批量新建
+                        button(type=button).btn.btn-default.add 新建
+                        button(type=button).btn.btn-default.rename 改名
+                        button(type=button).btn.btn-default.remove 删除
+                        button(type=button).btn.btn-default.refresh
+                            span.glyphicon.glyphicon-refresh
+                    .btn-group
+                        button(type=button).btn.btn-default.back
+                            span.glyphicon.glyphicon-chevron-left
+                        button(type=button).btn.btn-default.forward
+                            span.glyphicon.glyphicon-chevron-right
+                        button(type=button).btn.btn-default.up
+                            span.glyphicon.glyphicon-chevron-up
+                #payload
+                    ul
+    include ../include/modal-save

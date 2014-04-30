@@ -1,0 +1,13 @@
+extends ../layout
+include ../include/form
+
+append css
+
+block content
+    form.main-content.form-horizontal(method="POST")
+        +formItem("用户名")(id="username", name="user[name]", value = user && user.name)
+        +formItem("密码")(type="password", id="password", name="user[password]")
+
+        .controls
+            .btns-wrapper: button.btn-save(type="submit") 登录
+        input(type="hidden", name="referrer", value= referrer)

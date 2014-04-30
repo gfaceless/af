@@ -1,0 +1,20 @@
+mixin productList(products)
+    -each product in products
+        //- var necessary?
+        -var url = "/products/" + product._id
+
+        div.product
+            div.img-container
+                a(href= url, title= product.name)
+                    img(src= product.thumbnail? '/' + product.thumbnail : '/img/no-image.png')
+            h3.product-name
+                a(href= url)= product.name
+            span.product-category
+                -var categ = product.categories[0]
+                if categ
+                    a(href="/products?category=#{categ._id}")= categ.name
+                else
+                    a 未分类
+            span.product-mfr 由
+                a(href="/mfrs/#{product.mfr._id}")= product.mfr.shortName
+                | 销售制造

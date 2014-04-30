@@ -21,9 +21,23 @@ var mongoose = require('mongoose')
   , Product = mongoose.model('Product')
 
 
+
 function startRoute(app) {
 
+  app.get('/test-jade', function (req, res, next) {
+    res.render('test/test-jade', {
+      data: [
+        {name: 'what', id: '123'},
+        {name: 'what', id: '124'},
+      ]})
+  });
 
+  app.get('/test-index', function (req, res, next) {
+    Product.index(function (err, results) {
+      console.log('in test-index');
+      console.log(results);
+    });
+  })
 
   app.post('/test-upload', function (req, res,next) {
     console.log(req.files);
@@ -96,6 +110,7 @@ function startRoute(app) {
 
 
   app.get('/sales', requireSelf, sale.list);
+  app.get('/sales/:_id/download', sale.download);
   app.get('/sales/:_id/:code', checkId, sale.check);
   app.post('/sales/:_id'/*, requireSelf*/, sale.upload);
   app.post('/sales/:_id/download', sale.download);

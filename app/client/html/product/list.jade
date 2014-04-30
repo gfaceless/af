@@ -1,0 +1,18 @@
+include ../include/item-list
+include ../include/pager
+
+extends ../layout
+
+append css
+
+append js-bottom
+
+block content
+
+    ul.product-list(class= page_current ? "has-pagination" : "")
+        if !products.length
+            h2.no-results 无结果
+        else
+            +productList(products)
+            if page_current
+                +pager(page_count, page_current, url)

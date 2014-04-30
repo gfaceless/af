@@ -10,12 +10,14 @@ var express = require('express')
 
 require('./lib/mongoose');
 
+
 // Bootstrap models
 var models_path = __dirname + '/app/models';
 fs.readdirSync(models_path).forEach(function (file) {
   if (~file.indexOf('.js')) require(models_path + '/' + file)
 })
 var Category = mongoose.model('Category');
+var Product = mongoose.model('Product');
 
 var app = express();
 
@@ -37,8 +39,8 @@ var locals = function (req, res, next) {
     username: req.session.username,
     logged_in: req.session.logged_in,
     isAdmin: req.session.isAdmin,
-    // isSelf: false,
-    expose: {},
+
+    rootUrl: '/'
   });
   next();
 };
@@ -50,7 +52,7 @@ console.log('current env is: ' + app.settings.env);
 app
   .configure(function () {
     this.set('port', process.env.PORT || 3002)
-      .set('views', __dirname + '/views')
+      .set('views', __dirname + '/app/client/html')
       .set('view engine', 'jade')
       .use(express.favicon( path.join(__dirname, 'public/img/favicon.ico') ))
   })
@@ -83,7 +85,8 @@ app
       // it is implicitly added by Express at the point you define a route
       // (which is why your routes still worked even though you commented out app.use(app.router)).
       //TODO: router and static, which is first?? maybe for finer control, router should go first
-      .use(express.static(path.join(__dirname, 'public')))
+      .use(express.static(path.join(__dirname, 'dist')))
+      .use(express.static(path.join(__dirname, 'app/client/public')))
       .use(locals)
       .use(app.router)
 
@@ -135,9 +138,15 @@ dbConnector.open(function (err) {
     if(err) throw err;
     // rename it?
     app.locals.categories = tree;
-    http.createServer(app).listen(app.get('port'), function () {
-      console.log("Express server listening on port " + app.get('port'));
-    });
+    Product.index( function (err, indexProducts) {
+      if(err) throw err;
+      app.locals.indexProducts = indexProducts;
+      http.createServer(app).listen(app.get('port'), function () {
+        console.log("Express server listening on port " + app.get('port'));
+        console.log(app.settings);
+      });
+    })
+
   });
 
 });

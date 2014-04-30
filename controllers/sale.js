@@ -31,9 +31,9 @@ var isArray = require('util').isArray;
   })
 }*/
 
-exports.upload = function (req, resz) {
+exports.upload = function (req, res) {
   var codes = req.body.codes
-    , pid = req.body.pid
+    , pid = req.params._id
     , sales;
   if(!isArray(codes) || !pid) return res.send(500);
   // TODO: async this! IMPORTANT!
@@ -85,9 +85,14 @@ exports.prep = function (req, res, next) {
 };
 
 exports.download = function (req, res, next) {
+  // GET
+  if(req.method == 'GET') {
+    return res.render('sale/download');
+  }
+
   // POST
   var count = req.body.count || 1;
-  count = count > 100 ? 100 : count;
+  count = count > 2000 ? 2000 : count;
   var pid = req.params._id;
   generateCode(pid, count, function (err, digests) {
     if(err) return next(err);

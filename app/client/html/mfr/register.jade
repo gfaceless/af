@@ -1,0 +1,29 @@
+extends ../layout
+include ../include/form
+
+if validationOpt
+    append template
+        script#val-options(type="template/text")!=validationOpt
+
+append css
+
+append js-bottom
+    script(src="/js/vendor/jquery-validation.js")
+    script(src="/js/mfr/mfr.js")
+
+block content
+
+    -var imgSrc = mfr ? ( mfr.images ? mfr.images[0] : null ) : null
+    form.main-content.form-horizontal(method="POST")
+        if mfr
+            input(type="hidden", name="_method", value="put")
+        +formItem("厂商简称")(id="short-name", name="mfr[shortName]", value = mfr && mfr.shortName)
+        +formItem("厂商全称")(id="full-name", name="mfr[fullName]", value = mfr && mfr.fullName)
+        +formItem("厂商介绍", "textarea")(id="mfr-desc", name="mfr[desc]", value= mfr && mfr.desc, rows="6")
+        +formItem("所在省份")(id="province", name="mfr[province]", value = mfr && mfr.province)
+        +formItem("图片")(id="img-upload", type="file", name="image")
+
+        div.controls
+            .btns-wrapper
+                button.btn-save(type="submit")= mfr ? '保存' : '提交'
+                button.btn-back(type="button") 返回

@@ -1,0 +1,23 @@
+extends ../layout
+include ../include/form
+
+append template
+    if validationOpt
+        script#val-options(type="template/text")!=validationOpt
+
+
+append js-bottom
+    script(src="/js/vendor/jquery-validation.js")
+    script(src="/js/user/user.js")
+
+
+block content
+    form.main-content.form-horizontal(method="POST")
+        +formItem("会员名称")(id="username", name="user[name]", value = user && user.name)
+        +formItem("登录密码")(type="password", id="password", name="user[password]")
+        +formItem("确认密码")(type="password", id="re-password")
+
+        div.controls
+            .btns-wrapper
+                button.btn-save(type="submit") 注册
+                button.btn-back(type="button") 返回

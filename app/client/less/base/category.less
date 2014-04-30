@@ -1,0 +1,196 @@
+@cat-width: 600px;
+@lvl2-dt-width: 120px;
+/*normalize*/
+dl, dt, dd{
+    margin: 0;
+}
+
+
+/*position and display*/
+.category-menu {
+    margin: 0 0 0 30px;
+    position: absolute;
+    top: -30px;
+    z-index: 100;
+    width: 240px;
+
+    a {
+        font-size: 12px;
+        color: #848484;
+    }
+
+    > h2 {
+        .user-select(none);
+        margin: 0;
+        z-index: 100;
+        height: 30px;
+        line-height: 30px;
+        -webkit-animation: colorChange .3s ease-in 1 alternate 0s forwards;
+        position: relative;
+        background-color: #A21C1D;
+        color: #eee;
+        font-size: 15px;
+        text-align: center;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    > dl {
+
+        z-index: 100;
+        position: relative;
+        background-color: white;
+        .box-shadow(4px 2px 5px rgba(0, 0, 0, 0.2));
+        -webkit-animation: fadeIn .5s ease-in 1 alternate 0s forwards;
+
+        > dt {
+            z-index: 110;
+            line-height: 32px;
+            border-left: 1px solid #e6e6e6;
+            border-bottom: 1px solid #e6e6e6;
+            &:nth-of-type(even) {
+                background-color: #f1f1f1;
+            }
+            &:not(:first-child) {
+                border-top: none;
+            }
+            &:hover+dd {
+                display: block;
+            }
+            &:hover, &.highlight {
+                background-color: #88766e;
+                border-left: 1px solid #88766e;
+                a {
+                    color: white;
+                }
+            }
+
+            > a {
+                color: black;
+                font-weight: 500;
+                font-size: 14px;
+            }
+        }
+        > dd {
+            &:hover {
+                display: block;
+            }
+            display: none;
+            position: absolute;
+            z-index: 105;
+            /*  value `left` should be lvl1 dt's width
+            + lvl2 dt's margin left(negative)
+            - lvl2 dl's padding-left (which is equal to lvl2 dt's margin-left(neg))
+            resolves to lvl1 dt's content width
+            */
+            left: 100%;
+            top: 0;
+            width: @cat-width;
+            min-height: 100%;
+            background-color: #fff;
+            border: 1px solid #e6e6e6;
+            border-left: none;
+            .box-shadow(5px 5px 5px rgba(0, 0, 0, 0.2));
+
+        }
+        dl {
+            padding: 0 0 0 @lvl2-dt-width;
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            color: #646464;
+            > dt, > dd {
+                display: inline-block;
+            }
+            >dt {
+                width: @lvl2-dt-width;
+                margin-left: -@lvl2-dt-width;
+                float: left;
+                border-bottom: 2px solid #000;
+                line-height: 30px;
+                > a {
+                    font-size: 13px;
+                }
+            }
+            >dd {
+                border-left: 1px solid #EAEAEA;
+                line-height: 25px;
+                > a {
+                    padding: 0 10px;
+                    font-size: 12px;
+                }
+            }
+
+        }
+
+
+        a {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+
+}
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes colorChange {
+    from {
+        background-color: #fff;
+        color: #A21C1D;
+    }
+    to {
+        background-color: #A21C1D;
+        color: #fff;
+    }
+}
+
+@-webkit-keyframes colorChange {
+    from {
+        background-color: #fff;
+        color: #A21C1D;
+    }
+    to {
+        background-color: #A21C1D;
+        color: #fff;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        top: -500px;
+    }
+    to {
+        top: 0%;
+    }
+}
+
+@-webkit-keyframes slideDown {
+    from {
+        top: -500px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+

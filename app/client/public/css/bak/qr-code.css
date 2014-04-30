@@ -1,0 +1,35 @@
+#temp-qr-container {
+    display: none;
+}
+canvas{
+    display: block;
+    margin: 20px auto;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+    -moz-box-shadow:    0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+    box-shadow:         0px 0px 15px 0px rgba(50, 50, 50, 0.8);
+}
+#qr-form {
+    width: 700px;
+    padding: 50px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+}
+div.form-inline {
+    margin-bottom: 30px;
+}
+
+
+/*form element*/
+#qr-form input.input-sm{
+    width: 50px;
+}
+.form-group {
+    margin-right: 50px;
+}
+
+button[type=submit] {
+    margin-right: 30px;
+}
+#qr-form .bg-info {
+    padding: 4px 9px;
+}

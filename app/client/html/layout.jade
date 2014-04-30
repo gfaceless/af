@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        block head
+            title= title
+            meta(charset="utf-8")
+            meta(http-equiv="X-UA-Compatible" content="IE=edge")
+            block css
+                link(rel='stylesheet', href='/css/base.css')
+                link(rel='stylesheet', href= home ? "/css/home/home.css" : "/css/main.css")
+            |<!--[if lte IE 8]> <script src="/vendor/respond/dest/respond.min.js"></script> <![endif]-->
+            block js
+            block template
+    body
+        .flush-wrapper
+            include include/header
+            div#main
+                include include/message
+                include include/control_panel
+                include category/list
+                block content
+
+        include include/footer
+        block js-bottom
+            //-TODO:vendor shouldn't be used like this:
+            script(src="/vendor/jquery/dist/jquery.js")
+            script(src="/js/base.js")

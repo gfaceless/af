@@ -1,0 +1,49 @@
+@import "bs";
+@import (reference) "less/grid";
+@import (reference) "less/mixins";
+
+.main-content {
+
+    .item-title{
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .img-container {
+        margin: 0 auto;
+        img {
+            .img-responsive;
+            .center-block;
+            border: @my-border;
+            padding: 5px;
+            .box-shadow(@my-shadow);
+        }
+    }
+    .info-wrapper {
+        .make-row();
+        padding: 15px;
+        .info-label {
+            .make-xs-column-offset(1);
+            .make-xs-column(2);
+            text-align: right;
+        }
+        .info-content {
+            .make-xs-column(8);
+
+            p {
+                margin: 0;
+                white-space: pre-wrap;
+            }
+        }
+
+    }
+    .controls {
+        .btns-wrapper {
+            .make-xs-column(10);
+        }
+    }
+
+}
+
+
+
+

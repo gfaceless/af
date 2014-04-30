@@ -1,0 +1,12 @@
+mixin pager(total, current, url)
+    ul.pagination
+        -var isFirst = current === 1
+        li(class= isFirst ? "disabled":""): a(href= isFirst ? "#" : url + "&page=1" ) &laquo;
+        - for (var x = 1; x <= total; x++)
+            - var isCurrent = x===current
+            li(class= isCurrent ? "active":"")
+                a(href= isCurrent ? "#" : url + "&page=" + x) #{x}
+                    //- span.sr-only (current)
+        - var isLast = current === total
+        li(class= isLast ? "disabled":"")
+            a(href= isLast ? "#" : url + "&page=" + total) &raquo;

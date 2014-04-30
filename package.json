@@ -1,21 +1,67 @@
 {
-  "name": "application-name",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node app"
-  },
-  "dependencies": {
-    "express": "~3.5.0",
-    "jade": "~1.3.0",
-    "mongodb": "*",
-    "btoa": "*",
-    "mongoose": "~3.8.8",
-    "combohandler": "0.2.1",
-    "mongoose-unique-validator": "~0.3.0",
-    "async": "~0.2.10",
-    "underscore": "1.x",
-    "gm": "~1.14.2",
-    "mongoose-auto-increment": "~3.0.1"
-  }
+    "name": "application-name",
+    "version": "0.0.1",
+    "private": true,
+    "main": "app.js",
+    "scripts": {
+        "start": "node app"
+    },
+    "browser": {
+        "spin": "./bower_components/ladda-bootstrap/dist/spin.js",
+        "canvas-to-blob": "./bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js",
+        "jquery-qrcode": "./bower_components/jquery.qrcode/src/jquery.qrcode.js",
+        "qrcode": "./bower_components/jquery.qrcode/src/qrcode.js",
+        "ladda": "./bower_components/ladda-bootstrap/dist/ladda.js",
+        "jquery": "./bower_components/jquery/dist/jquery.js",
+        "jquery-validation": "./bower_components/jquery-validation/dist/jquery.validate.js"
+    },
+    "browserify-shim": {
+        "jquery": "global:jQuery",
+        "qrcode": "qrcode",
+        "jquery-qrcode": { "depends": ["qrcode:qrcode"]},
+        "spin": "Spinner",
+        "ladda": { "depends": ["spin:Spinner"], "exports": "Ladda"},
+        "canvas-to-blob": { "exports": "dataURLtoBlob"}
+    },
+    "browserify": {
+        "transform": [
+            "browserify-shim"
+        ]
+    },
+    "dependencies": {
+        "express": "~3.5.0",
+        "jade": "~1.3.0",
+        "mongodb": "*",
+        "btoa": "*",
+        "mongoose": "~3.8.8",
+        "combohandler": "0.2.1",
+        "mongoose-unique-validator": "~0.3.0",
+        "async": "~0.2.10",
+        "underscore": "1.x",
+        "gm": "~1.14.2",
+        "mongoose-auto-increment": "~3.0.1",
+        "lodash": "~2.4.1"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.4",
+        "grunt-contrib-uglify": "~0.4.0",
+        "grunt-contrib-less": "~0.11.0",
+        "grunt-contrib-jade": "~0.11.0",
+        "gulp": "~3.6.0",
+        "vinyl-source-stream": "~0.1.1",
+        "browserify-shim": "~3.4.1",
+        "gulp-livereload": "~1.3.1",
+        "gulp-sass": "~0.7.1",
+        "gulp-ruby-sass": "~0.4.3",
+        "gulp-notify": "~1.2.5",
+        "gulp-plumber": "~0.6.1",
+        "gulp-util": "~2.2.14",
+        "gulp-less": "~1.2.3",
+        "gulp-watch": "~0.5.4",
+        "gulp-changed": "~0.3.0",
+        "watchify": "~0.8.2",
+        "wiredep": "~1.4.4",
+        "gulp-if": "~1.0.0",
+        "strip-path": "~0.1.1"
+    }
 }

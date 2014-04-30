@@ -1,0 +1,84 @@
+@import "bs";
+
+@import "my-variable";
+
+@item-width: 200px;
+
+@list-margin: 20px;
+@list-padding: 10px;
+
+@item-h-grove: 30px;
+@item-v-grove: 30px;
+
+@item-occupied: (@item-width + @item-h-grove);
+
+
+.item-list, .product-list {
+    border: @my-border;
+    .list-unstyled;
+    &:extend(.clearfix all);
+
+    margin: 0 auto;
+    padding: @list-padding;
+
+    // TODO: USE FUNCTION
+    @w1: (@item-occupied * 1 + @list-padding * 2) + @my-border-width * 2;
+    @media (min-width: @w1 ){
+        width: @w1;
+    }
+
+    @w2: (@item-occupied * 2 + @list-padding * 2 + @my-border-width * 2);
+    @media (min-width: @w2 ){
+        width: @w2;
+    }
+    @w3: (@item-occupied * 3 + @list-padding * 2 + @my-border-width * 2);
+    @media (min-width: @w3 ){
+        width: @w3;
+    }
+    @w4: (@item-occupied * 4 + @list-padding * 2 + @my-border-width * 2);
+    @media (min-width: @w4 ){
+        width: @w4;
+    }
+
+    @w5: (@item-occupied * 5 + @list-padding * 2 + @my-border-width * 2);
+    @media (min-width: @w5 ){
+        width: @w5;
+    }
+    .no-results {
+        text-align: center;
+    }
+
+}
+
+
+
+.product {
+    float: left;
+
+    margin: @item-h-grove / 2 @item-v-grove/2;
+    padding: 10px;
+    width: @item-width;
+    text-align: center;
+
+    .img-container {
+        /*width: 100%;*/
+        .box-shadow(@my-subtle-shadow);
+        padding: 8px;
+        border: 1px solid #ccc;
+        img {
+            &:extend(.img-responsive all);
+        }
+    }
+    .product-name {
+        text-align: center;
+        .text-overflow;
+
+    }
+    .product-category {
+        margin-right: 10px;
+    }
+    &:hover {
+        background-color: #eee;
+    }
+}
+

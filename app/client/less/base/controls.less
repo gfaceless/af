@@ -1,0 +1,29 @@
+
+@import (reference) "less/buttons";
+
+.main-content {
+    .controls {
+        // because its sub-element may be floating due to grid system.
+        &:extend(.clearfix all);
+        text-align: right;
+
+
+        .btns-wrapper{
+            margin: 10px 0;
+        }
+
+        form {
+            display: inline-block;
+        }
+    }
+}
+
+
+.btn-edit, .btn-check, .btn-back, .btn-save, .btn-remove, .btn-add {
+    margin: 0 3px;
+    &:extend(.btn);
+    &:extend(.btn-primary);
+}
+.btn-remove {
+    &:extend(.btn-danger);
+}

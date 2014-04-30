@@ -1,0 +1,77 @@
+@search-height:34px;
+@banner-color:#b10000;
+
+
+.wrapper {
+  overflow: hidden;
+}
+
+#header{
+  margin: 0 auto;
+  background: @banner-color;
+  position: relative;
+  overflow: hidden;
+}
+
+#userInfo {
+  text-align: right;
+  padding: 10px 30px;
+  a {
+    color: white;
+    margin: 0 5px 0 5px;
+  }
+}
+
+
+#siteLogo {
+  float: left;
+  margin: 0 0 0 75px;
+}
+#siteSearch {
+  float: right;
+  margin: 0 30px;
+    width: 50%;
+}
+
+#siteSearchInput {
+  float: left;
+  color: #000;
+  margin: 0;
+//  width: 632px;
+    width: 100%;
+  height: @search-height;
+  line-height: @search-height;
+  padding: 0 0 0 8px;
+  border: 0 none;
+  border-radius: 2px 0 0 2px;
+  font-weight: 900;
+  /*background: url("data:image/gif;base64,R0lGODlhAQADAJEAAObm5t3d3ff39wAAACH5BAAAAAAALAAAAAABAAMAAAICDFQAOw==") repeat-x scroll 0 0 transparent;*/
+}
+
+
+#siteSearchBtn {
+  float: right;
+  width: 90px;
+    margin-left: -90px;
+  border: 0;
+  font-size: 14px;
+  letter-spacing: 4px;
+  cursor: pointer;
+  color: #fff;
+  background: #462824 url(/img/index-sprites.png) no-repeat 0 -111px;
+  line-height: 34px;
+  height: 34px;
+  overflow: hidden;
+  text-indent: -9999px;
+  &:hover {
+    background-color: #866150;
+    background-position:  -90px -111px;
+  }
+}
+
+#siteNav {
+  margin: 15px 0 0;
+  height: 30px;
+  font-size: 14px;
+  background: #8e0000 url(data:image/gif;base64,R0lGODlhAQAeAIAAAI4AAI8BACH5BAAAAAAALAAAAAABAB4AAAIHRGChy+2KCgA7) repeat-x;
+}

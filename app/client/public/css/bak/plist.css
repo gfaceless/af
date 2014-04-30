@@ -1,0 +1,34 @@
+ul.product-list {
+    list-style: none;
+    overflow: hidden;
+
+}
+
+.product {
+    float: left;
+    margin: 20px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.product .img-container {
+    /*width: 100%;*/
+    padding: 9px;
+    border: 1px solid #ccc;
+}
+.product .img-container img {
+    width: 100%;
+}
+
+.product .product-name {
+    text-align: center;
+}
+
+.product .product-category {
+    margin-right: 10px;
+}
+
+.product:hover {
+    background-color: #eee;
+}

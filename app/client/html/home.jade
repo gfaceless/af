@@ -1,0 +1,18 @@
+include include/item-list
+extends layout
+
+append js-bottom
+    script(src="/js/home/home.js")
+
+block content
+
+    #main-slideshow
+
+    if indexProducts
+        #index-products
+            each cat in indexProducts
+                -var products = cat.products
+                if products && products.length
+                    h3= cat.name
+                    ul.product-list
+                        +productList(products)

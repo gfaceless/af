@@ -1,0 +1,150 @@
+#folder-app {
+    max-width: 1200px;
+    height: 600px;
+    background-color: #eee;
+    padding: 20px 30px;
+    -webkit-border-radius: 8px 8px;
+    -moz-border-radius: 8px 8px;
+    border-radius: 8px 8px;
+}
+
+#folder-app > div{
+    height: 100%;
+}
+
+#tree-view {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    height: 100%;
+    padding: 20px;
+    overflow: auto;
+}
+#tree-view .folder {
+    position: relative;
+    /*padding not collapse*/
+}
+
+#tree-view ul {
+    border-left: 1px dashed #eeeeee;
+}
+
+#tree-view .select{
+
+    padding: 8px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#tree-view .selected{
+
+    color: #fafafa;
+    background-color: #2a6496;
+}
+
+#tree-view .expand {
+
+    position: absolute;
+    left: -10px;
+    top: 1px;
+    font-size: 10px;
+    line-height: 30px;
+}
+
+
+
+
+/* RIGHT PANEL */
+#details-view {
+    height: 100%;
+}
+#metadata {
+    height: 15%;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    font-size: 20px;
+    position: relative;
+}
+#metadata .info {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px;
+}
+
+#details-view .control {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 10px 30px;
+}
+
+
+.control .btn-group:nth-child(1){
+    float: right;
+}
+.control .btn-group:nth-child(2){
+    float: left;
+}
+
+#payload {
+    height: 75%;
+    overflow-y: auto;
+    background-color: white;
+    padding: 10px 20px;
+}
+#payload ul {
+    padding: 0;
+    margin: 0;
+}
+
+#payload li {
+    float: left;
+    padding: 10px 20px;
+    position: relative;
+}
+#payload li:hover {
+    background-color: #dbdbdb;
+}
+#payload li.selected{
+    background-color: #CCCCCC;
+}
+#payload li .glyphicon {
+    font-size: 50px;
+    display: block;
+    left: 9px;
+}
+#payload li .name {
+    width: 68px;
+    height: 30px;
+
+    white-space: nowrap;
+    text-align: center;
+    /*word-wrap: break-word;*/
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#payload li input{
+    position: absolute;
+    width: 100px;
+    bottom: 15px;
+    left: 5px;
+    text-align: center;
+}
+
+/*misc*/
+/*TODO: make it desktop-query*/
+.modal {
+    overflow-y: auto;
+}
+
+.modal-open {
+    overflow: auto;
+}

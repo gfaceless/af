@@ -1,0 +1,26 @@
+extends ../layout
+
+append css
+
+block content
+    -var m = mfr
+    -var image = m.images && m.images[0]
+    div.main-content
+        .img-container
+            if image
+                img.image(src= '/' + image)
+            else
+                img.image(src= '/img/no-image.png')
+        h2.item-title= m.fullName
+        .info-wrapper
+            .info-label 简称:
+            .info-content: span= m.shortName
+        .info-wrapper
+            .info-label 详细描述:
+            .info-content: p= m.desc
+        .controls
+            .btns-wrapper
+                if isSelf
+                    a.btn-edit(href='/mfrs/' + m._id + '/edit') 编辑
+                else
+                    a.btn-check(href='/products/list?mfr=' + m._id)= '查看' + m.shortName + '的全部产品'
